@@ -1,0 +1,14 @@
+<%- include('./partials/head.ejs') %>
+
+<section class="appartments-info">
+    <% filterData.forEach(info => { %>
+        <tr>
+        <td><%= info.complex_name %></td>
+        <td><%= info.variantName %></td>
+        <td><%= info.departurePricePersons %></td>
+        </tr>
+    <% }) %>
+</section>
+
+
+<%- include('./partials/foot.ejs') %>
