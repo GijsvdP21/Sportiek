@@ -2,25 +2,28 @@ import express from "express";
 import { config } from "dotenv";
 config();
 
-const apiKey = process.env.API_URL;
-
 // Create a new Express app
 const app = express();
 const port = process.env.PORT || 4242;
 
-const sportiek =
-  "https://raw.githubusercontent.com/DikkeTimo/proof-of-concept-Sportiek/main/json/localjssportiek.json";
+// Urls from .env file
+const apiKey = process.env.API_URL_INFOMARTION;
+const sportiekfeedone = process.env.API_URL_ACCOMMODATIES1;
+const sportiekfeedtwo= process.env.API_URL_ACCOMMODATIES2
+const sportiekfeedthree= process.env.API_URL_ACCOMMODATIES3
+
+// Variabel name to the url's
 const sportiekone = [apiKey];
+const sportiekfeed1 = [sportiekfeedone]
+const sportiekfeed2 = [sportiekfeedtwo]
+const sportiekfeed3 = [sportiekfeedthree]
 
-const datasportiek = [[sportiek], [sportiekone]];
-const [data1, data2] = await Promise.all(datasportiek.map(fetchJson));
-const data = { data1, data2 };
+// all url's together
+const urls = [sportiekone, sportiekfeed1, sportiekfeed2, sportiekfeed3];
+const [data1, data2, data3, data4] = await Promise.all(urls.map(fetchJson));
+const combinedData = [...data2, ...data3, ...data4];
 
-// const checkdata = data1.filter((item) => {
-//   return item.numberOfBeds === item.departurePricePersons
-// });
-
-const filterData = data1.reduce((acc, item) => {
+const filterData = combinedData.reduce((acc, item) => {
   const existingItem = acc.find((el) => el.variantName === item.variantName);
 
   if (existingItem) {
@@ -35,12 +38,30 @@ const filterData = data1.reduce((acc, item) => {
       departurePricePersons: item.departurePricePersons,
       variantName: item.variantName,
       complex_name: item.complex_name,
-      departureDates: [item.departureDate]
+      departureDates: [item.departureDate],
+      number: [item.number]
     });
   }
 
   return acc;
 }, []);
+
+
+
+// const Id = []
+// filterData.forEach(item => {
+//   Id.push(item.accomodationId);
+// })
+
+// const dorp = []
+// data1.forEach(item => {
+//   dorp.push(item.accomodationId)
+//   dorp.push(item.dorp)
+// })
+
+// console.log(Id)
+// console.log(dorp)
+
 
 
 // Set EJS as the template engine and specify the views directory
@@ -54,12 +75,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", async function (request, response) {
-  response.render("index", { data1: data1, filterData: filterData });
+  response.render("index", { filterData, data1, data2, data3 ,data4 });
 });
 
 app.get("/results", async function (request, response) {
-  response.render("results", { data1: data1, filterData: filterData });
+  response.render("results", { filterData, data1, data2, data3 ,data4 });
 });
+
+// { data1: data1, data2: data2, filterData: filterData, data: data }
 
 app.listen(port, () => {
   console.log("listening on http://localhost:" + port);
@@ -67,17 +90,28 @@ app.listen(port, () => {
 
 
 async function fetchJson(urls) {
-  // Display the loader
-  try {
-    const response = await fetch(urls);
-    const data = await response.json();
-    // Hide the loader once the response is received
-    console.log("Loaded!");
-    return data;
-  } catch (error) {
-    console.error("Error:", error);
-    // Hide the loader in case of an error
-    console.log("Error!");
-    throw error;
-  }
+  return await fetch(urls)
+    .then((response) => response.json())
+    .catch((error) => error);
 }
+
+
+
+
+
+// const datasportiek = [[sportiekfeed1], [sportiekone]];
+// const [data1, data2] = await Promise.all(datasportiek.map(fetchJson));
+// const data = { data1, data2 };
+
+
+// const checkdata = data1.filter((item) => {
+//   return item.numberOfBeds === item.departurePricePersons
+// });
+
+
+// functies
+// const dorp = [];
+// data1.forEach(item => {
+//   dorp.push(item.dorp);
+//   dorp.push(item.accomodationId)
+// });
