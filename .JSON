@@ -1,0 +1,91 @@
+{
+    "accomodationId": 975,
+    "complex_name": "Aquisana",
+    "arrangement_description": "<p><strong>Inclusief 6-daagse skipas voor Serre Chevalier (250 km).</strong></p>\r\n",
+    "accomodatie_description": "2-kamer apt. voor max. 4 pers.",
+    "duration": 7,
+    "departurePriceType": "person",
+    "departurePrice": 638,
+    "departurePricePersons": 4,
+    "departurePriceOffer": "yes",
+    "serviceType": "room-only",
+    "skipasIncluded": "yes",
+    "skipasIncludedName": "Skipas Serre Chevalier, 6 dgn",
+    "transportType": "own",
+    "variantName": "2-kamer apt. voor max. 4 pers.",
+    "numberOfBeds": 4,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "roomSurface": 40,
+    "dates": [ {
+        "departureDate": "23-12-2023",
+        "number": 99
+    },
+    {
+        "departureDate": "30-12-2023",
+        "number": 99
+    },
+    {
+        "departureDate": "06-01-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "13-01-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "20-01-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "27-01-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "03-02-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "10-02-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "17-02-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "24-02-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "02-03-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "09-03-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "16-03-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "23-03-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "30-03-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "06-04-2024",
+        "number": 99
+    },
+    {
+        "departureDate": "13-04-2024",
+        "number": 99
+    }
+    ]
+}
+
+

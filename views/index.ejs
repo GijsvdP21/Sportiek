@@ -1,41 +1,42 @@
 <%- include('./partials/head.ejs') %>
 
+<%- include('./partials/heading.ejs') %>
+
 <main>
-  <div class="color-balk">
-    <img class="logo" src="/images/logo.jpg" alt="Sportiek logo">
-  </div>
   <h1 class="h1-title">Vind <br> Beschikbaarheid</h1>
   <form action="get">
     <h2>Locatie</h2>
     <label for="my-dropdown">Selecteer het land:</label>
-    <select id="my-dropdown">
+    <select id="countryDropdown">
       <option value="">Landen</option>
-      <option value="option1">Land 1</option>
-      <option value="option2">Land 2</option>
-      <option value="option3">Land 3</option>
-      <option value="option4">Land 4</option>
+      <% locations.forEach(place => { %>
+        <option value="<%= place.land %>"><%= place.land %></option>
+      <% }) %>
     </select>
     <label for="my-dropdown">Selecteer het skigebied:</label>
     <select id="my-dropdown">
       <option value="">Skigebieden</option>
-      <option value="option1">Skigebied 1</option>
-      <option value="option2">Skigebied 2</option>
-      <option value="option3">Skigebied 3</option>
-      <option value="option4">Skigebied 4</option>
+      <% locations.forEach(place => { %>
+        <option value="<%- place.skigebied %>"><%- place.skigebied %></option>
+      <% }) %>
     </select>
     <label for="my-dropdown">Selecteer het dorp:</label>
     <select id="my-dropdown">
       <option value="">dorpen</option>
-      <option value="option1">dorp 1</option>
-      <option value="option2">dorp 2</option>
-      <option value="option3">dorp 3</option>
-      <option value="option4">dorp 4</option>
+      <% locations.forEach(place => { %>
+        <option value="<%- place.dorp %>"><%- place.dorp %></option>
+      <% }) %>
     </select>
     <h2>Datum</h2>
-    <input type="date" id="date" name="date" min="2023-12-23" autocomplete="off" max="2024-02-03" placeholder="van...">
-    <input type="date" id="date" name="date" min="2023-12-30" autocomplete="off" max="2024-02-10" placeholder="tot...">
+    <label for="my-dropdown">Selecteer de dag van vertrek:</label>
+    <select id="my-dropdown">
+      <option value="">dag van vertrek</option>
+      <% departureDates.forEach(function(date) { %>
+        <option><%= date %></option>
+      <% }); %>
+    </select>
   </form>
-  <a href="/results"><button>Zoek</button></a>
+  <a href="/results"><button class="zoek-knop">Zoek</button></a>
 </main>
 
 <%- include('./partials/foot.ejs') %>

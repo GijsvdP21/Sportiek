@@ -8,14 +8,18 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    margin-top: 2rem;
 }
 
 .color-balk {
+    position: sticky;
+    top: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     background-color: rgb(105, 228, 255);
     align-items: center;
+    justify-content: space-around;
 }
 
 .logo {
@@ -36,7 +40,7 @@ form {
     gap: 1rem;
 }
 
-button {
+.zoek-knop {
     width: 8rem;
     height: 2rem;
     background: greenyellow;
@@ -45,9 +49,27 @@ button {
     box-shadow: 4px 7px lightgrey;
 }
 
-button:active {
+.zoek-knop:active {
     box-shadow: none;
     transform: translateY(4px);
+}
+
+.circle {
+    border-radius: 50%;
+    cursor: alias;
+}
+
+.home-icon {
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.filter-icon {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 500px) {
@@ -64,4 +86,25 @@ form {
 .appartments-info {
     display: flex;
     flex-direction: column;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    width: 150%;
+}
+
+.table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.groen {
+    background-color: lime;
+}
+
+.rood {
+    background-color: red;
 }

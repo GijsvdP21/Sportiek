@@ -1,13 +1,44 @@
 <%- include('./partials/head.ejs') %>
 
+<%- include('./partials/heading.ejs') %>
+
 <section class="appartments-info">
-    <% filterData.forEach(info => { %>
-        <tr>
-        <td><%= info.complex_name %></td>
-        <td><%= info.variantName %></td>
-        <td><%= info.departurePricePersons %></td>
-        </tr>
-    <% }) %>
+    <div class="table-wrapper">
+        <table id="left-side-table" cellspacing="0" cellpadding="2">
+            <thead>
+                <tr>
+                    <th>Accommodatie</th>
+                    <th>Dorp</th>
+                    <th>Kamertype</th>
+                    <th>Personen</th>
+                    <% departureDates.forEach(function(date) { %>
+                        <th><%= date %></th>
+                    <% }); %>
+                </tr>
+            </thead>
+            <tbody>
+            <% correctHouses.forEach(info => { %>
+                <tr>
+                    <td><%- info.complex_name %></td>
+                    <td></td>
+                    <td><%- info.variantName %></td>
+                    <td><%= info.departurePricePersons %></td>
+                    <% if (info.number >= 1) { %>
+                        <td class="groen"><%= info.number %></td>
+                    <% } else { %>
+                        <td class="rood"></td>
+                    <% } %>
+                    <td><%= info.departureDate %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+        <ul>
+            <% numberList.forEach(function(number) { %>
+              <li><%= number %></li>
+            <% }); %>
+        </ul>
+    </div>
 </section>
 
 
