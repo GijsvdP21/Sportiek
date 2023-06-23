@@ -181,7 +181,7 @@ app.get("/results", async function (request, response) {
     // console.log(correctHouses.slice(0, 20));
 
 
-    console.log(combinedData);
+    // console.log(combinedData);
     const departureDates = [...new Set(combinedData.map(item => item.departureDate))];
     departureDates.sort((date1, date2) => {
     const [day1, month1, year1] = date1.split('-');
